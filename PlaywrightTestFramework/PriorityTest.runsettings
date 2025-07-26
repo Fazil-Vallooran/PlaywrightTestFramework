@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <TestRunParameters>
+    <!-- Test execution settings -->
+    <Parameter name="ExecutionPriority" value="HighToLow" />
+    <Parameter name="ParallelExecution" value="false" />
+  </TestRunParameters>
+  
+  <!-- NUnit settings -->
+  <NUnit>
+    <!-- Run tests in order based on Order attribute -->
+    <InternalTraceLevel>Info</InternalTraceLevel>
+    <WorkDirectory>TestResults</WorkDirectory>
+    <DefaultTimeout>60000</DefaultTimeout>
+    
+    <!-- Filter tests by category if needed -->
+    <Where>cat == Smoke || cat == Critical</Where>
+  </NUnit>
+  
+  <!-- Run configuration -->
+  <RunConfiguration>
+    <MaxCpuCount>1</MaxCpuCount>
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <TestSessionTimeout>180000</TestSessionTimeout>
+    <TreatNoTestsAsError>true</TreatNoTestsAsError>
+  </RunConfiguration>
+  
+  <!-- Data collection -->
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+          <CodeCoverage>
+            <ModulePaths>
+              <Include>
+                <ModulePath>.*\.dll$</ModulePath>
+              </Include>
+            </ModulePaths>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

@@ -1,0 +1,22 @@
+{
+    "enabled": true,
+    "server": {
+        "url": "http://localhost:8080",
+        "project": "superadmin_personal",
+        "apiKey": "test_4eoACBCDRmOQK6MzCaFmOzDJEFskTU3P9a75O2zIb18nFQWpsno7lvPjRNXPWJTV"
+    },
+
+    "launch": {
+        "name": "Fazil Test Launch",
+        "description": "Testing Nunit",
+        "debugMode": false,
+        "attributes": [ "pw", "uat", "platform:x64" ]
+
+    },
+    "reporting": {
+        "enabled": true,
+        "reportingInterval": 1000,
+        "maxRetries": 3,
+        "retryDelay": 5000
+    }
+}

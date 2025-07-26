@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <Playwright>
+    <BrowserName>chromium</BrowserName>
+    <LaunchOptions>
+      <Headless>false</Headless>
+      <Channel>msedge</Channel>
+      <Args>
+        <Arg>--start-maximized</Arg>
+      </Args>
+    </LaunchOptions>
+  </Playwright>
+  
+  <!-- ReportPortal configuration -->
+  <NUnit>
+    <NumberOfTestWorkers>1</NumberOfTestWorkers>
+  </NUnit>
+  
+  <TestAdaptersPaths>
+    <Path>packages\ReportPortal.NUnit\</Path>
+  </TestAdaptersPaths>
+</RunSettings>
