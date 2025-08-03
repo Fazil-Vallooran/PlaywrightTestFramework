@@ -10,7 +10,7 @@ namespace PlaywrightTestFramework.tests
 {
     [Parallelizable(ParallelScope.Self)]
     [TestFixture]
-    public class ExampleTest : BaseTest
+    public class ExampleTest : BrowserBaseTest
     {
         [Test]
         [Order(1)]

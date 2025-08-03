@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+    "enabled": false,
     "server": {
         "url": "http://localhost:8080",
         "project": "superadmin_personal",

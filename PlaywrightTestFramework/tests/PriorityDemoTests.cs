@@ -11,7 +11,7 @@ namespace PlaywrightTestFramework.tests
 {
     [Parallelizable(ParallelScope.Self)]
     [TestFixture]
-    public class PriorityDemoTests : BaseTest
+    public class PriorityDemoTests : BrowserBaseTest
     {
         [Test]
         [Order(1)]

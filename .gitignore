@@ -361,3 +361,30 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Playwright Test Framework specific files
+# Screenshots from failed tests (but keep the directory)
+Screenshots/*.png
+Screenshots/*.jpg
+Screenshots/*.jpeg
+!Screenshots/.gitkeep
+
+# Test data that might contain sensitive information  
+TestData/sensitive/
+TestData/production/
+
+# Playwright browsers and dependencies
+ms-playwright/
+
+# ReportPortal logs and reports
+reportportal/
+rp_logs/
+
+# Environment-specific config files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.local.json
+
+# Sensitive configuration files
+secrets.json
+.env

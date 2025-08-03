@@ -1,3 +1,4 @@
+using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 using PlaywrightTestFramework.Reporting;
 using PlaywrightTestFramework.Utils;
@@ -7,9 +8,9 @@ using PlaywrightTestFramework.tests;
 namespace PlaywrightTestFramework.Tests
 {
     /// <summary>
-    /// Base test class with ReportPortal integration and enhanced configuration management
+    /// Base test class for browser-based tests with Playwright integration
     /// </summary>
-    public abstract class BaseTest
+    public abstract class BrowserBaseTest : PageTest
     {
         protected static bool _configurationLogged = false;
 
@@ -151,6 +152,33 @@ namespace PlaywrightTestFramework.Tests
             // Handle test results based on status
             if (result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
+                // Take screenshot on failure if enabled
+                if (ConfigurationManager.ShouldTakeScreenshotOnFailure())
+                {
+                    var screenshotsDir = ConfigurationManager.GetScreenshotsDirectory();
+                    
+                    // Ensure screenshots directory exists
+                    if (!Directory.Exists(screenshotsDir))
+                    {
+                        Directory.CreateDirectory(screenshotsDir);
+                    }
+                    
+                    var screenshotPath = Path.Combine(screenshotsDir, $"screenshot_{testName}_{DateTime.Now:yyyyMMdd_HHmmss}.png");
+                    try
+                    {
+                        Page.ScreenshotAsync(new() { Path = screenshotPath }).Wait();
+                        ReportPortalHelper.AddScreenshot(screenshotPath, "Test Failed - Screenshot");
+                        
+                        // Log screenshot info
+                        Logger.LogInfo($"Screenshot saved: {screenshotPath}");
+                    }
+                    catch (Exception ex)
+                    {
+                        ReportPortalHelper.LogWarn($"Failed to take screenshot: {ex.Message}");
+                        Logger.LogWarn($"Failed to take screenshot: {ex.Message}");
+                    }
+                }
+                
                 // Log failure with priority context
                 var testMethod = GetType().GetMethod(TestContext.CurrentContext.Test.MethodName!);
                 var priorityAttribute = testMethod?.GetCustomAttribute<PriorityAttribute>();
