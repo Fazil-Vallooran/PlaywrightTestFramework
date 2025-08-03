@@ -7,7 +7,7 @@ namespace PlaywrightTestFramework.tests
 {
     [Parallelizable(ParallelScope.Self)]
     [TestFixture]
-    public class Tests : BaseTest
+    public class Tests : BrowserBaseTest
     {
         [Test]
         public async Task MyTest()

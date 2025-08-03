@@ -1,0 +1,23 @@
+{
+  "username": "testuser@example.com",
+  "password": "SecurePassword123!",
+  "expectedTitle": "Welcome Dashboard",
+  "timeout": 30,
+  "environment": "staging",
+  "userData": {
+    "firstName": "Test",
+    "lastName": "User",
+    "phone": "+1-555-123-4567",
+    "address": {
+      "street": "123 Test Street",
+      "city": "Test City",
+      "state": "TS",
+      "zipCode": "12345"
+    }
+  },
+  "testUrls": {
+    "loginPage": "https://example.com/login",
+    "dashboard": "https://example.com/dashboard",
+    "profile": "https://example.com/profile"
+  }
+}
